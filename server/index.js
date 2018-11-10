@@ -44,26 +44,30 @@ app.get('/deals', (req, res, next) => {
       });
     return res;
 });
-
 app.post('/deal', (req, res, next) => {
-    let query = "INSERT INTO deals(item, price,location,description) VALUES ('" + req.item
+    req = req.body;
+    console.log('received');
+    let query = "INSERT INTO deals(item, price,location,description) VALUES ('" + req.item +
         "'," + req.price + ",'" + req.location + "','" + req.description + "');";
-        connection.query(query, function (error, results, fields){
+        console.log(query);
+        connection.query(query, function (error, result, fields){
+            console.log(error, result);
             if (error) {
+                console.log("error");
                 res.json({
                     status: 404,
                     error: true,
                     errors: error
                 })
             } else {
+                console.log("succedded");
                 res.json({
                     status: 200,
                     success: true
                 })
             }
         });
-        return res;
-});
+  });
 
 app.post('/buy', (req, res, next) => {
     res.json({

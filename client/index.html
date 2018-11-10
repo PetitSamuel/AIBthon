@@ -37,16 +37,30 @@
       </table>
     </div>
     <div id="dialog" title="">
-        <table id="popup-gigs-table">
+        <table id="add-new-deal-popup">
           <thead>
           <tr>
-            <th> Event name </th>
-            <th> Tickets </th>
+            <th>Item Name</th>
+            <th> Price (in Euros) </th>
+            <th> Website (optional) </th>
+            <th> Location </th>
+            <th> Description of the item / service </th>
+            <th> IBAN </th>
+
           </tr>
           </thead>
           <tbody>
+            <tr>
+              <td><input type="text" id="item" name="item"></td>
+              <td><input type="text" id="price" name="price"></td>
+              <td><input type="text" id="website" name="website"></td>
+              <td><input type="text" id="location" name="location"></td>
+              <td><input type="text" id="description" name="description"></td>
+              <td><input type="text" id="iban" name="iban"></td>
+            </tr>
           </tbody>
         </table>
+        <button class="btn" id="sumbitNewDeal">Submit</button>
     </div>
     <div id="buyDialog" title="">
         <table id="buy-table">
