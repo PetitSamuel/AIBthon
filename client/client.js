@@ -14,4 +14,6 @@ $(document).ready(function(){
           $('#deal-table').append(rowsAsHtml);
         }
     );
+        // id, name
+
 });

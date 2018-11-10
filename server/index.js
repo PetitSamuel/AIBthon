@@ -9,15 +9,33 @@ app.enable("trust proxy");
 app.use(cors());
 app.use(express.json());
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'mypassword',
+  database : 'AIBthon'
+});
+ 
+connection.connect();
+
 app.get('/', (req, res) => {
     res.json({
-        hello: 'waddup default page'
+        message: "default page for API"
     })
     return res;
 });
 
 app.get('/deals', (req, res, next) => {
-  // return all deals
+    connection.query('SELECT * FROM codes', function (error, results, fields) {
+        if (error) throw error;
+        res.json({
+            status: 200,
+            items: results.length,
+            data : results
+        })
+      });
+    return res;
 });
 
 app.post('/buy', (req, res, next) => {
