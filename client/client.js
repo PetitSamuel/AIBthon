@@ -8,6 +8,7 @@ $(document).ready(function(){
           }
           // append to table
           var rowsAsHtml = '';
+          //make pretty
           $.each(response.data, function (key, value) {
             rowsAsHtml += '<li id="' + value.id + '">';
             rowsAsHtml += value.item;
@@ -16,6 +17,7 @@ $(document).ready(function(){
             if(value.website != null)
               rowsAsHtml += '<div>' + value.website + '</div>';
             rowsAsHtml += '<div>' + value.description + '</div>';
+            //add buy button
             rowsAsHtml += '</li>';
           });
           $('#deal-list').append(rowsAsHtml);
