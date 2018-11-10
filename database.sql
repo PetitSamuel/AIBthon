@@ -27,3 +27,5 @@ INSERT INTO deals(item, price, location, description) VALUES ("groceries", 20, "
 INSERT INTO deals(item, price, website, location, description) VALUES ("english training", 40, "englishtraining.com", "Grafton Street English facility","Coupon to attend english courses");
 INSERT INTO deals(item, price, location, description) VALUES ("barber", 10, "Any grafton barber","Coupon for one session at the barber");
 INSERT INTO deals(item, price, location, description) VALUES ("hostal", 15, "Liffey river hostal","Coupon to stay one night at the liffey river hostal");
+
+ALTER TABLE codes ADD isAvailable tinyint(1) DEFAULT 1;
