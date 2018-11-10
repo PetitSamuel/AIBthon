@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
   password : 'mypassword',
   database : 'AIBthon'
 });
- 
+
 connection.connect();
 
 app.get('/', (req, res) => {
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/deals', (req, res, next) => {
-    connection.query('SELECT * FROM codes', function (error, results, fields) {
+    connection.query('SELECT * FROM deals', function (error, results, fields) {
         if (error) throw error;
         res.json({
             status: 200,

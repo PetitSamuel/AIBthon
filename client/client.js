@@ -9,11 +9,9 @@ $(document).ready(function(){
           // append to table
           var rowsAsHtml = '';
           $.each(response.data, function (key, value) {
-            rowsAsHtml += '<tr id="' + value.id + '"><td>' + value.name + '</td></tr>';
+            rowsAsHtml += '<tr id="' + value.id + '"><td>' + value.item + '</td></tr>';
           });
           $('#deal-table').append(rowsAsHtml);
         }
     );
-        // id, name
-
 });
