@@ -21,7 +21,7 @@ connection.connect();
 
 app.get('/', (req, res) => {
     res.json({
-        message: "default page for API²"
+        message: "default page for API"
     })
     return res;
 });
