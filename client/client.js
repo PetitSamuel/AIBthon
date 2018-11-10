@@ -21,15 +21,15 @@ $(document).ready(function(){
           var rowsAsHtml = '';
           //make pretty
           $.each(response.data, function (key, value) {
-            rowsAsHtml += '<li id="' + value.id + '">';
-            rowsAsHtml += value.item;
+            rowsAsHtml += '<div id="' + value.id + '">';
+            rowsAsHtml += '<div>' + value.item + '</div>';
             rowsAsHtml += '<div>' + value.price + '</div>';
             rowsAsHtml += '<div>' + value.location + '</div>';
             if(value.website != null)
               rowsAsHtml += '<div>' + value.website + '</div>';
             rowsAsHtml += '<div>' + value.description + '</div>';
-            //add buy button
-            rowsAsHtml += '</li>';
+            rowsAsHtml += '<div>Buy</div>';
+            rowsAsHtml += '</div>';
           });
           $('#deal-list').append(rowsAsHtml);
         }
