@@ -57,6 +57,13 @@ $(document).ready(function(){
       $("#dialog").dialog("open");
   });
 
+  $(document).on("click", "#words", function() {
+      $('#wordsDialog #word1').val('');
+      $('#wordsDialog #word2').val('');
+      $('#wordsDialog #word3').val('');
+      $("#wordsDialog").dialog("open");
+  });
+
   $(document).on("click", "#buyDeal", function() {
       $('#buyDialog #name').val('');
       $('#buyDialog #cardNumber').val('');
@@ -120,7 +127,7 @@ $(document).on("click", "#collect", function() {
   let word1 = $('#wordsDialog #word1').val().trim();
   let word2 = $('#wordsDialog #word2').val().trim();
   let word3 = $('#wordsDialog #word3').val().trim();
-  let words = word1 + " " + word2 " " + word3;
+  let words = word1 + " " + word2 + " " + word3;
   const wordCollection = {
       words: words
   }
