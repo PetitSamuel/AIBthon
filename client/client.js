@@ -1,4 +1,15 @@
+$("#dialog").dialog({
+    autoOpen : false,
+    title: 'Upcoming gigs for ',
+    draggable: false,
+    modal : false,
+    height: 700,
+    width: 1100,
+    show : "blind",
+    hide : "blind"
+  });
 $(document).ready(function(){
+
     $.get(
         "http://127.0.0.1:5000/deals",
         function(response) {
@@ -23,4 +34,8 @@ $(document).ready(function(){
           $('#deal-list').append(rowsAsHtml);
         }
     );
+
+    $(document).on("click", "#addDeal", function() {
+        $("#dialog").dialog("open");
+    });
 });
