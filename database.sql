@@ -17,9 +17,6 @@ CREATE TABLE deals(
   description VARCHAR(1000)
 );
 
-
-// samples 
-
 INSERT INTO codes(code, item_id) VALUES ("HELLO WORLD MAN", 1);
 INSERT INTO codes(code, item_id) VALUES ("HELP BOTTLE CHIP", 2);
 INSERT INTO codes(code, item_id) VALUES ("BLUE BUILDING FOOTBALL", 3);
