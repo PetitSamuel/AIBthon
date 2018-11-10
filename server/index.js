@@ -54,6 +54,35 @@ app.post('/deal', (req, res, next) => {
             console.log(error, result);
             if (error) {
                 console.log("error");
+                res.status(404);
+                res.body = "fail";
+                res.json({
+                    status: 404,
+                    error: true,
+                    errors: error
+                })
+            } else {
+                console.log("succedded");
+                res.body = "success";
+                res.json({
+                    status: 200,
+                    success: true,
+                    message: "hello"
+                })
+            }
+        });
+  });
+
+  app.post('/buy', (req, res, next) => {
+    req = req.body;
+    let words = get3words();
+    let query = "INSERT INTO codes(item_id, code) VALUES (" + req.item_id +
+        ",'" + req.words + "');";
+        console.log(query);
+        connection.query(query, function (error, result, fields){
+            console.log(error, result);
+            if (error) {
+                console.log("error");
                 res.json({
                     status: 404,
                     error: true,
@@ -63,18 +92,12 @@ app.post('/deal', (req, res, next) => {
                 console.log("succedded");
                 res.json({
                     status: 200,
+                    code: words,
                     success: true
                 })
             }
         });
   });
-
-app.post('/buy', (req, res, next) => {
-    res.json({
-        hello: 'heyheyeeyeheyehey'
-    })
-  // buy somthing
-});
 
 app.listen(5000, () => {
   console.log('Listening on http://localhost:5000');

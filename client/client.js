@@ -117,15 +117,18 @@ $(document).on("click", "#buy", function() {
         }
         fetch('http://127.0.0.1:5000/deal', {
             method: 'POST',
+            mode: "cors", // or without this line
             body: JSON.stringify(newDeal),
             headers: {
               'content-type': 'application/json'
             }
           }).then(response => {      
             if (response.status !== 200) {
+                console.log(response);
                 alert("Error when creating deal.");
                 return;
             } 
+            console.log(response);
             alert ("Deal successfully created!");
             $("#dialog").dialog("close");
           });
