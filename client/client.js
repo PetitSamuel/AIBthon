@@ -47,9 +47,20 @@ $(document).ready(function(){
       $("#dialog").dialog("open");
   });
   $(document).on("click", "#buyDeal", function() {
-    console.log(this.value);
     var buyDialogAsHtml = '';
+    console.log(this.value);
+    buyDialogAsHtml += '<button class="btn" id="buy" value="' + this.value + '">Buy</button>';
     $('#buy-table').append(buyDialogAsHtml);
     $("#buyDialog").dialog("open");
   });
+});
+$(document).on("click", "#buy", function() {
+  $.post(
+    "http://127.0.0.1:5000/buy",
+    this.value,
+    function(response) {
+      //the words
+      console.log("hiiii");
+    }
+  );
 });
