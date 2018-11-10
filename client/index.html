@@ -11,18 +11,20 @@
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
     <button class="btn" id="addDeal">Propose a service</button>
     <button class="btn" id="words">Collect Service</button>
-    <h1 class="title">Deals</h1>
+    <div class="header">
+      <h1 class="title">Deals</h1>
+    </div>
   </header>
   <main>
     <div class="deals">
-      <table id="deal-list">
+      <table id="deal-list" class="data-table">
         <thead>
         <tr>
           <th> Item </th>
@@ -38,7 +40,7 @@
       </table>
     </div>
     <div id="dialog" title="">
-        <table id="add-new-deal-popup">
+        <table id="add-new-deal-popup" class="data-table">
           <thead>
           <tr>
             <th> Item Name </th>
@@ -64,7 +66,7 @@
         <button class="btn" id="submitNewDeal">Submit</button>
     </div>
     <div id="buyDialog" title="">
-        <table id="buy-table">
+        <table id="buy-table" class="data-table">
           <thead>
           <tr>
             <th> Name </th>
@@ -84,7 +86,7 @@
         </table>
     </div>
     <div id="wordsDialog" title="">
-        <table id="words-table">
+        <table id="words-table" class="data-table">
           <thead>
           <tr>
             <th> Word 1 </th>
