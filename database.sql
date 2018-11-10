@@ -24,6 +24,6 @@ INSERT INTO codes(code, item_id) VALUES ("NO CHICKEN RUGBY", 4);
 
 
 INSERT INTO deals(item, price, location, description) VALUES ("groceries", 20, "Spar, Grand Canal Dock","Coupon to buy groceries at the local spar");
-INSERT INTO deals(item, price, location, description) VALUES ("english training", 40, "Grafton Street English facility","Coupon to attend english courses");
+INSERT INTO deals(item, price, website, location, description) VALUES ("english training", 40, "englishtraining.com", "Grafton Street English facility","Coupon to attend english courses");
 INSERT INTO deals(item, price, location, description) VALUES ("barber", 10, "Any grafton barber","Coupon for one session at the barber");
 INSERT INTO deals(item, price, location, description) VALUES ("hostal", 15, "Liffey river hostal","Coupon to stay one night at the liffey river hostal");
