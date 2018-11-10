@@ -43,8 +43,32 @@ app.get('/deals', (req, res, next) => {
     return res;
 });
 
-app.get('/collect', (req, res, next) => {
-    // collect API
+app.post('/collect', (req, res, next) => {
+    req = req.body;
+    let query = 'SELECT isAvailable FROM codes WHERE code="' + req.words + '";';
+    connection.query(query, function (error, results, fields) {
+        if (results == undefined || results == null || results.length === 0 || results[0].isAvailable === 0){
+            res.status(401);
+            return res;
+        }
+    });
+
+    connection.query('UPDATE codes SET isAvailable=0 WHERE code="' + req.words + '" LIMIT 1;', function (error, results) {
+        console.log(results);
+        if (results.changedRows === 1) {
+            res.json({
+                message: "Success!"
+            });
+            return;
+        } else {
+            res.status(401);
+            res.json({
+                message: "the words do not match or were already redeemed."
+            })
+            return;
+        }
+    });
+    return res;
 });
 
 app.post('/deal', (req, res, next) => {

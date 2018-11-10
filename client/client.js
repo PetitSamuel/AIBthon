@@ -139,16 +139,16 @@ $(document).on("click", "#collect", function() {
       },
       data: JSON.stringify(wordCollection),
       success: function (response){
-          if (response.status != 200) {
-              alert("The words are not valid");
-              return;
-          }
-          console.log(response);
-          alert("Collect your service: " + response.code);
+            console.log(response);
+          alert("Code successfully redeemed.");
           $("#wordsDialog").dialog("close");
       },
       error: function (xhr, ajaxOptions, thrownError) {
-          alert("Error when processing payment!");
+        if (xhr.status === 401) {
+            alert("The code is not available for use.");
+            return;
+        }
+        alert("An error occured!");
       }
   });
 });
