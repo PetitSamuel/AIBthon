@@ -9,6 +9,16 @@ $("#dialog").dialog({
     hide : "blind"
   });
 $("#buyDialog").dialog({
+  autoOpen : false,
+  title: 'Buy',
+  draggable: false,
+  modal : false,
+  height: 250,
+  width: 1100,
+  show : "blind",
+  hide : "blind"
+});
+$("#wordsDialog").dialog({
     autoOpen : false,
     title: 'Buy',
     draggable: false,
