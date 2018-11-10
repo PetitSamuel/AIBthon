@@ -57,7 +57,7 @@ $(document).ready(function(){
   $(document).on("click", "#buy", function() {
   $.post(
     "http://127.0.0.1:5000/buy",
-    this.value,
+      this.value,
     function(response) {
       //the words
       console.log("hiiii");
