@@ -13,8 +13,8 @@ $("#buyDialog").dialog({
     title: 'Buy',
     draggable: false,
     modal : false,
-    height: 500,
-    width: 500,
+    height: 250,
+    width: 1100,
     show : "blind",
     hide : "blind"
   });
@@ -115,12 +115,12 @@ $(document).ready(function(){
             headers: {
               'content-type': 'application/json'
             }
-          }).then(response => {      
+          }).then(response => {
             if (response.status !== 200) {
                 console.log(response);
                 alert("Error when creating deal.");
                 return;
-            } 
+            }
             console.log(response);
             alert ("Deal successfully created!");
             $("#dialog").dialog("close");
