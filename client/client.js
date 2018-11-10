@@ -47,22 +47,39 @@ $(document).ready(function(){
       $("#dialog").dialog("open");
   });
   $(document).on("click", "#buyDeal", function() {
+    $('#buyDialog button').remove();
     var buyDialogAsHtml = '';
-    console.log(this.value);
     buyDialogAsHtml += '<button class="btn" id="buy" value="' + this.value + '">Buy</button>';
     $('#buy-table').append(buyDialogAsHtml);
     $("#buyDialog").dialog("open");
   });
 
   $(document).on("click", "#buy", function() {
-  $.post(
-    "http://127.0.0.1:5000/buy",
-      this.value,
-    function(response) {
-      //the words
-      console.log("hiiii");
+    let index = this.value;
+    const buyId = {
+        id: index,
+        message: "cool"
     }
-  );
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/buy",
+        headers: {
+            'content-type': 'application/json'
+        },
+        data: JSON.stringify(buyId),
+        success: function (response){
+            if (response.status != 200) {
+                alert("Error when processing paiment!");
+                return;
+            }
+            console.log(response);
+            alert("Item bought! Please use the following words : " + response.code);
+            $("#buyDialog").dialog("close");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("Error when processing paiment!");
+        }
+    });
 });
 
     $(document).on("click", "#addDeal", function() {
@@ -110,3 +127,4 @@ $(document).ready(function(){
           });
     });
 });
+

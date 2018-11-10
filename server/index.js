@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-var randomWords = require('random-words');
 const app = express();
-
+const randomWords = require('random-words');
 app.enable("trust proxy");
 
 app.use(cors());
@@ -72,9 +71,10 @@ app.post('/deal', (req, res, next) => {
 
   app.post('/buy', (req, res, next) => {
     req = req.body;
+    console.log(req);
     let words = get3words();
-    let query = "INSERT INTO codes(item_id, code) VALUES (" + req.item_id +
-        ",'" + req.words + "');";
+    let query = "INSERT INTO codes(item_id, code) VALUES (" + req.id +
+        ",'" + words + "');";
         console.log(query);
         connection.query(query, function (error, result, fields){
             console.log(error, result);
@@ -99,6 +99,7 @@ app.post('/deal', (req, res, next) => {
 app.listen(5000, () => {
   console.log('Listening on http://localhost:5000');
 });
+
 
 function get3words () {
     return randomWords({exactly:1, wordsPerString:3})[0];
