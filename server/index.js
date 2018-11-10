@@ -74,8 +74,15 @@ app.post('/collect', (req, res, next) => {
 app.post('/deal', (req, res, next) => {
     req = req.body;
     console.log('received');
-    let query = "INSERT INTO deals(item, price,location,description) VALUES ('" + req.item +
+    let query = "";
+    if (req.website) {
+        query = "INSERT INTO deals(item, price,location,description,website) VALUES ('" + req.item +
+        "'," + req.price + ",'" + req.location + "','" + req.description + "','" + req.website + "');";
+    } else {
+        query = "INSERT INTO deals(item, price,location,description) VALUES ('" + req.item +
         "'," + req.price + ",'" + req.location + "','" + req.description + "');";
+    }
+
         console.log(query);
         connection.query(query, function (error, result, fields){
             console.log(error, result);

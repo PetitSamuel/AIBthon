@@ -40,6 +40,7 @@ $(document).ready(function(){
       var rowsAsHtml = '';
       //make pretty
       $.each(response.data, function (key, value) {
+          console.log(value);
         rowsAsHtml += '<tr id="' + value.id + '">';
         rowsAsHtml += '<td>' + value.item + '</td>';
         rowsAsHtml += '<td>' + value.price + '</td>';
