@@ -1,8 +1,12 @@
 console.log("yea");
 $(document).ready(function(){
     console.log("yeaaaa");
-    $.get("localhost:5000/buy", function(data, status){
-       console.log("bac");
-    }); 
+    $.get(
+        "http://127.0.0.1:5000",
+        function(data) {
+           console.log('page content:');
+           console.log(data);
+        }
+    );
 });
 
