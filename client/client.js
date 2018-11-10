@@ -53,8 +53,8 @@ $(document).ready(function(){
     $('#buy-table').append(buyDialogAsHtml);
     $("#buyDialog").dialog("open");
   });
-});
-$(document).on("click", "#buy", function() {
+
+  $(document).on("click", "#buy", function() {
   $.post(
     "http://127.0.0.1:5000/buy",
     this.value,
@@ -63,6 +63,7 @@ $(document).on("click", "#buy", function() {
       console.log("hiiii");
     }
   );
+});
 
     $.get(
         "http://127.0.0.1:5000/deals",
@@ -99,7 +100,7 @@ $(document).on("click", "#buy", function() {
         $("#dialog").dialog("open");
     });
 
-    $(document).on("click", "#sumbitNewDeal", function() {
+    $(document).on("click", "#submitNewDeal", function() {
         console.log("deal submitted");
         var item = $('#dialog #item').val();
         var price = $('#dialog #price').val();
