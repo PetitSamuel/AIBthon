@@ -21,21 +21,48 @@ connection.connect();
 
 app.get('/', (req, res) => {
     res.json({
-        message: "default page for API"
+        message: "default page for API²"
     })
     return res;
 });
 
 app.get('/deals', (req, res, next) => {
-    connection.query('SELECT * FROM codes', function (error, results, fields) {
-        if (error) throw error;
-        res.json({
-            status: 200,
-            items: results.length,
-            data : results
-        })
+    connection.query('SELECT * FROM deals', function (error, results, fields) {
+        if (error) {
+            res.json({
+                status: 404,
+                items : 0,
+                errors: error
+            })
+        } else {
+            res.json({
+                status: 200,
+                items: results.length,
+                data : results
+            })
+        }
       });
     return res;
+});
+
+app.post('/deal', (req, res, next) => {
+    let query = "INSERT INTO deals(item, price,location,description) VALUES ('" + req.item
+        "'," + req.price + ",'" + req.location + "','" + req.description + "');";
+        connection.query(query, function (error, results, fields){
+            if (error) {
+                res.json({
+                    status: 404,
+                    error: true,
+                    errors: error
+                })
+            } else {
+                res.json({
+                    status: 200,
+                    success: true
+                })
+            }
+        });
+        return res;
 });
 
 app.post('/buy', (req, res, next) => {
