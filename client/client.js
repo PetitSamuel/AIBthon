@@ -1,9 +1,9 @@
 $("#dialog").dialog({
     autoOpen : false,
-    title: 'Upcoming gigs for ',
+    title: 'Propose an Item or Service',
     draggable: false,
     modal : false,
-    height: 700,
+    height: 250,
     width: 1100,
     show : "blind",
     hide : "blind"
@@ -53,8 +53,8 @@ $(document).ready(function(){
     $('#buy-table').append(buyDialogAsHtml);
     $("#buyDialog").dialog("open");
   });
-});
-$(document).on("click", "#buy", function() {
+
+  $(document).on("click", "#buy", function() {
   $.post(
     "http://127.0.0.1:5000/buy",
     this.value,
@@ -63,4 +63,75 @@ $(document).on("click", "#buy", function() {
       console.log("hiiii");
     }
   );
+});
+
+    $.get(
+        "http://127.0.0.1:5000/deals",
+        function(response) {
+          if(response.items === 0){
+            alert('No deals to display');
+            return;
+          }
+          // append to table
+          var rowsAsHtml = '';
+          //make pretty
+          $.each(response.data, function (key, value) {
+            rowsAsHtml += '<li id="' + value.id + '">';
+            rowsAsHtml += value.item;
+            rowsAsHtml += '<div>' + value.price + '</div>';
+            rowsAsHtml += '<div>' + value.location + '</div>';
+            if(value.website != null)
+              rowsAsHtml += '<div>' + value.website + '</div>';
+            rowsAsHtml += '<div>' + value.description + '</div>';
+            //add buy button
+            rowsAsHtml += '</li>';
+          });
+          $('#deal-list').append(rowsAsHtml);
+        }
+    );
+
+    $(document).on("click", "#addDeal", function() {
+        $('#dialog #item').val('');
+        $('#dialog #price').val('');
+        $('#dialog #website').val('');
+        $('#dialog #location').val('');
+        $('#dialog #description').val('');
+        $('#dialog #iban').val('');
+        $("#dialog").dialog("open");
+    });
+
+    $(document).on("click", "#submitNewDeal", function() {
+        console.log("deal submitted");
+        var item = $('#dialog #item').val();
+        var price = $('#dialog #price').val();
+        var website = $('#dialog #website').val();
+        var location = $('#dialog #location').val();
+        var description = $('#dialog #description').val();
+        var iban = $('#dialog #iban').val();
+        const newDeal = {
+            'item': item,
+            'price': price,
+            'website': website,
+            'location': location,
+            'description': description,
+            'iban': iban
+        }
+        fetch('http://127.0.0.1:5000/deal', {
+            method: 'POST',
+            mode: "cors", // or without this line
+            body: JSON.stringify(newDeal),
+            headers: {
+              'content-type': 'application/json'
+            }
+          }).then(response => {      
+            if (response.status !== 200) {
+                console.log(response);
+                alert("Error when creating deal.");
+                return;
+            } 
+            console.log(response);
+            alert ("Deal successfully created!");
+            $("#dialog").dialog("close");
+          });
+    });
 });
