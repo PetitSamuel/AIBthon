@@ -1,13 +1,26 @@
 #dialog {
-    display: none;
-    width:100%;
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-  }
-  #dialog th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
+  display: none;
+  width:100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+#dialog th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+#buyDialog {
+  display: none;
+  width:100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+#buyDialog th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
