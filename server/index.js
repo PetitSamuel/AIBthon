@@ -10,9 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({
-    message: 'Default get request endpoint'
-  });
+    res.json({
+        hello: 'waddup default page'
+    })
+    return res;
 });
 
 app.get('/deals', (req, res, next) => {
