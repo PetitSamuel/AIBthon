@@ -9,9 +9,16 @@ $(document).ready(function(){
           // append to table
           var rowsAsHtml = '';
           $.each(response.data, function (key, value) {
-            rowsAsHtml += '<tr id="' + value.id + '"><td>' + value.item + '</td></tr>';
+            rowsAsHtml += '<li id="' + value.id + '">';
+            rowsAsHtml += value.item;
+            rowsAsHtml += '<div>' + value.price + '</div>';
+            rowsAsHtml += '<div>' + value.location + '</div>';
+            if(value.website != null)
+              rowsAsHtml += '<div>' + value.website + '</div>';
+            rowsAsHtml += '<div>' + value.description + '</div>';
+            rowsAsHtml += '</li>';
           });
-          $('#deal-table').append(rowsAsHtml);
+          $('#deal-list').append(rowsAsHtml);
         }
     );
 });
