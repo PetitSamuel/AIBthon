@@ -46,7 +46,14 @@ $(document).ready(function(){
   $(document).on("click", "#addDeal", function() {
       $("#dialog").dialog("open");
   });
+
   $(document).on("click", "#buyDeal", function() {
+      $('#buyDialog #name').val('');
+      $('#buyDialog #cardNumber').val('');
+      $('#buyDialog #securityCode').val('');
+      $('#buyDialog #expirationDate').val('');
+      $('#buyDialog #billingAddress').val('');
+      
     $('#buyDialog button').remove();
     var buyDialogAsHtml = '';
     buyDialogAsHtml += '<button class="btn" id="buy" value="' + this.value + '">Buy</button>';
@@ -56,9 +63,26 @@ $(document).ready(function(){
 
   $(document).on("click", "#buy", function() {
     let index = this.value;
+    let name = $('#buyDialog #name').val();
+    let cardNumber = $('#buyDialog #cardNumber').val();
+    let securityCode = $('#buyDialog #securityCode').val();
+    let expirationDate = $('#buyDialog #expirationDate').val();
+    let address = $('#buyDialog #billingAddress').val();
+    if (typeof(name) == undefined || name.length == 0 || 
+            typeof(cardNumber) == undefined || cardNumber.length == 0 || 
+            typeof(securityCode) == undefined || securityCode.length == 0 || 
+            typeof(expirationDate) == undefined || expirationDate.length == 0 || 
+            typeof(address) == undefined || address.length == 0) {
+        alert("Invalid card details entered.");
+        return;
+    }
     const buyId = {
         id: index,
-        message: "cool"
+        name: name,
+        cardNumber: cardNumber,
+        securityCode: securityCode,
+        expirationDate: expirationDate,
+        address: address
     }
       $.ajax({
         type: "POST",

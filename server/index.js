@@ -42,6 +42,11 @@ app.get('/deals', (req, res, next) => {
       });
     return res;
 });
+
+app.get('/collect', (req, res, next) => {
+    // collect API
+});
+
 app.post('/deal', (req, res, next) => {
     req = req.body;
     console.log('received');
