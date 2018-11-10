@@ -121,7 +121,29 @@ $(document).on("click", "#collect", function() {
   let word2 = $('#wordsDialog #word2').val().trim();
   let word3 = $('#wordsDialog #word3').val().trim();
   let words = word1 + " " + word2 " " + word3;
-
+  const wordCollection = {
+      words: words
+  }
+    $.ajax({
+      type: "POST",
+      url: "http://127.0.0.1:5000/collect",
+      headers: {
+          'content-type': 'application/json'
+      },
+      data: JSON.stringify(wordCollection),
+      success: function (response){
+          if (response.status != 200) {
+              alert("The words are not valid");
+              return;
+          }
+          console.log(response);
+          alert("Collect your service: " + response.code);
+          $("#wordsDialog").dialog("close");
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert("Error when processing payment!");
+      }
+  });
 });
 
     $(document).on("click", "#addDeal", function() {
