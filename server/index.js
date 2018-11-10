@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-
+var randomWords = require('random-words');
 const app = express();
-
 
 app.enable("trust proxy");
 
@@ -65,9 +64,7 @@ app.post('/deal', (req, res, next) => {
                 console.log("succedded");
                 res.body = "success";
                 res.json({
-                    status: 200,
-                    success: true,
-                    message: "hello"
+                    success: 'done'
                 })
             }
         });
@@ -102,3 +99,7 @@ app.post('/deal', (req, res, next) => {
 app.listen(5000, () => {
   console.log('Listening on http://localhost:5000');
 });
+
+function get3words () {
+    return randomWords({exactly:1, wordsPerString:3})[0];
+}
