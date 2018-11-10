@@ -13,5 +13,6 @@ CREATE TABLE deals(
   item VARCHAR(100) NOT NULL,
   price FLOAT NOT NULL,
   location VARCHAR(200) NOT NULL,
-  website VARCHAR(200)
+  website VARCHAR(200),
+  description VARCHAR(1000)
 );
