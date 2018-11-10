@@ -43,8 +43,17 @@ app.get('/deals', (req, res, next) => {
     return res;
 });
 
-app.get('/collect', (req, res, next) => {
-    // collect API
+app.post('/collect', (req, res, next) => {
+    req = req.body;
+    connection.query('SELECT isAvailable FROM codes WHERE code="' + req.words + '";', function (error, results, fields) {
+        console.log(results);
+        return;
+    });
+
+    connection.query('UPDATE code SET isAvailable=0 WHERE code="' + req.words + '";', function (error, results, fields) {
+        console.log(results);
+    });
+    return res;
 });
 
 app.post('/deal', (req, res, next) => {
