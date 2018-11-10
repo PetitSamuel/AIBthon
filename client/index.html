@@ -6,11 +6,17 @@
   <title>Gift for the Future</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <header>
+    <button class="btn" id="addDeal">Propose a service</button>
     <h1 class="title">Deals</h1>
   </header>
   <main>
@@ -19,7 +25,20 @@
           <!-- filled by js -->
       </ul>
     </div>
+    <div id="dialog" title="">
+        <table id="popup-gigs-table">
+          <thead>
+          <tr>
+            <th> Event name </th>
+            <th> Tickets </th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+    </div>
   </main>
   <script src="client.js"></script>
 </body>
+
 </html>
