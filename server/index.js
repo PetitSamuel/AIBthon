@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
   password : 'mypassword',
   database : 'AIBthon'
 });
- 
+
 connection.connect();
 
 app.get('/', (req, res) => {

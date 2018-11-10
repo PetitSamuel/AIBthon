@@ -8,12 +8,10 @@ $(document).ready(function(){
           }
           // append to table
           var rowsAsHtml = '';
-          $.each(response.items, function (key, value) {
-            rowsAsHtml += '<tr id="' + value.id + '"><td>' + value.name + '</td></tr>';
+          $.each(response.data, function (key, value) {
+            rowsAsHtml += '<tr id="' + value.id + '"><td>' + value.item + '</td></tr>';
           });
           $('#deal-table').append(rowsAsHtml);
         }
     );
-        // id, name
-
 });
