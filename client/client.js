@@ -9,8 +9,18 @@ $("#dialog").dialog({
     hide : "blind"
   });
 $("#buyDialog").dialog({
+  autoOpen : false,
+  title: 'Buy',
+  draggable: false,
+  modal : false,
+  height: 250,
+  width: 1100,
+  show : "blind",
+  hide : "blind"
+});
+$("#wordsDialog").dialog({
     autoOpen : false,
-    title: 'Buy',
+    title: 'Collect Service',
     draggable: false,
     modal : false,
     height: 250,
@@ -53,7 +63,7 @@ $(document).ready(function(){
       $('#buyDialog #securityCode').val('');
       $('#buyDialog #expirationDate').val('');
       $('#buyDialog #billingAddress').val('');
-      
+
     $('#buyDialog button').remove();
     var buyDialogAsHtml = '';
     buyDialogAsHtml += '<button class="btn" id="buy" value="' + this.value + '">Buy</button>';
@@ -68,10 +78,10 @@ $(document).ready(function(){
     let securityCode = $('#buyDialog #securityCode').val();
     let expirationDate = $('#buyDialog #expirationDate').val();
     let address = $('#buyDialog #billingAddress').val();
-    if (typeof(name) == undefined || name.length == 0 || 
-            typeof(cardNumber) == undefined || cardNumber.length == 0 || 
-            typeof(securityCode) == undefined || securityCode.length == 0 || 
-            typeof(expirationDate) == undefined || expirationDate.length == 0 || 
+    if (typeof(name) == undefined || name.length == 0 ||
+            typeof(cardNumber) == undefined || cardNumber.length == 0 ||
+            typeof(securityCode) == undefined || securityCode.length == 0 ||
+            typeof(expirationDate) == undefined || expirationDate.length == 0 ||
             typeof(address) == undefined || address.length == 0) {
         alert("Invalid card details entered.");
         return;
@@ -104,6 +114,36 @@ $(document).ready(function(){
             alert("Error when processing paiment!");
         }
     });
+});
+
+$(document).on("click", "#collect", function() {
+  let word1 = $('#wordsDialog #word1').val().trim();
+  let word2 = $('#wordsDialog #word2').val().trim();
+  let word3 = $('#wordsDialog #word3').val().trim();
+  let words = word1 + " " + word2 " " + word3;
+  const wordCollection = {
+      words: words
+  }
+    $.ajax({
+      type: "POST",
+      url: "http://127.0.0.1:5000/collect",
+      headers: {
+          'content-type': 'application/json'
+      },
+      data: JSON.stringify(wordCollection),
+      success: function (response){
+          if (response.status != 200) {
+              alert("The words are not valid");
+              return;
+          }
+          console.log(response);
+          alert("Collect your service: " + response.code);
+          $("#wordsDialog").dialog("close");
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert("Error when processing payment!");
+      }
+  });
 });
 
     $(document).on("click", "#addDeal", function() {
@@ -151,4 +191,3 @@ $(document).ready(function(){
           });
     });
 });
-

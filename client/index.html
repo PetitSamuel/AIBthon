@@ -17,6 +17,7 @@
 
   <header>
     <button class="btn" id="addDeal">Propose a service</button>
+    <button class="btn" id="words">Collect Service</button>
     <h1 class="title">Deals</h1>
   </header>
   <main>
@@ -79,6 +80,24 @@
             <td><input type="text" id="securityCode" name="securityCode"></td>
             <td><input type="text" id="expirationDate" name="expirationDate"></td>
             <td><input type="text" id="billingAddress" name="billingAddress"></td>
+          </tbody>
+        </table>
+    </div>
+    <div id="wordsDialog" title="">
+        <table id="words-table">
+          <thead>
+          <tr>
+            <th> Word 1 </th>
+            <th> Word 2 </th>
+            <th> Word 3 </th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+            <td><input type="text" id="word1" name="word1"></td>
+            <td><input type="text" id="word2" name="word2"></td>
+            <td><input type="text" id="word3" name="word3"></td>
+            <td><button class="btn" id="collect">Collect</button></td>
           </tbody>
         </table>
     </div>
